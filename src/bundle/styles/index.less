@@ -1,0 +1,195 @@
+
+// Simple hack :)
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans','Helvetica Neue',Arial,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+}
+
+html {
+  background: #ddd;
+}
+
+.content {
+  &.loading {
+    .control input,
+    .control button {
+      display: none;
+    }
+    .log-data {
+      display: none;
+    }
+  }
+  &.ready {
+    .ctrl-input,
+    .ctrl-send,
+    .ctrl-disconnect {
+      display: none;
+    }
+  }
+  &.connected {
+    .ctrl-connect {
+      display: none;
+    }
+    .indicator {
+      background: #666;
+    }
+  }
+}
+
+.header,
+.control,
+.log {
+  width: 480px;
+  margin: 0 auto;
+}
+
+@keyframes sending {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    left: 100%;
+  }
+}
+
+@keyframes receiving {
+  0% {
+    left: 100%;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: 0;
+  }
+}
+
+.indicator {
+  position: relative;
+  background: #ccc;
+  height: 1px;
+
+  .sending,
+  .receiving {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 1px;
+    width: 40px;
+    background: #fff;
+  }
+
+  .sending {
+    animation: sending 3s;
+  }
+
+  .receiving {
+    animation: receiving 3s;
+  }
+}
+
+.header {
+  margin-top: 80px;
+
+  h1 {
+    font-size: 26px;
+    line-height: 40px;
+  }
+}
+
+.control {
+  padding: 10px 0;
+  height: 40px;
+
+  input,
+  button {
+    line-height: 20px;
+    padding: 0 8px;
+    margin-right: 4px;
+    border: solid 1px #aaa;
+    border-radius: 2px;
+    background: #eee;
+    outline: none;
+    color: #555;
+
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  input:hover,
+  input:focus,
+  button:hover {
+    border-color: #999;
+    color: #333;
+    background: #f4f4f4;
+    box-shadow: 0 1px 3px #ccc, 0 1px 3px #fff inset;
+  }
+
+  button:active {
+    box-shadow: 0 1px 3px #aaa inset;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+.log {
+  margin-top: 20px;
+}
+
+.log-data {
+  list-style: none;
+  margin-bottom: 80px;
+
+  li .text {
+    line-height: 20px;
+    padding: 0 8px;
+    margin-right: 4px;
+    border: solid 1px #aaa;
+    border-radius: 2px;
+    background: #eee;
+    outline: none;
+    color: #555;
+
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  li + li {
+    margin-top: 10px;
+  }
+
+  li.info,
+  li.error {
+    text-align: center;
+  }
+
+  li.info .text {
+    border-color: #eee;
+    color: #999;
+  }
+
+  li.error .text {
+    border-color: #111;
+    color: #111;
+  }
+
+  li.received {
+    text-align: right;
+  }
+
+  li.sent {
+    text-align: left;
+  }
+}

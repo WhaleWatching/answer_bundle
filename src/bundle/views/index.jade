@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Test Bundle
+    // inject:css 
+    // endinject 
+  body
+    .content#bundle.loading
+      .header
+        h1 Answer bundle by Edward
+      .control
+        button.ctrl-connect Connect
+        button.ctrl-disconnect Disconnect
+        input.ctrl-input(type="text" placeholder="Type message here")
+        button.ctrl-send Send
+      .indicator
+      .log
+        ul.log-data
+          li.welcome
+            span.text Hi there, click connect to start
+    // inject:js 
+    // endinject 
